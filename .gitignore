@@ -7,3 +7,6 @@ __pycache__/
 
 *App/migrations/000*.py
 *App/migrations/__pycache__/*
+
+# static folders
+media/
