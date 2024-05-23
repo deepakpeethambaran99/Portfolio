@@ -1,0 +1,442 @@
+/* global class */
+.gitfolio-underline{
+    text-decoration: underline;
+    text-decoration-color: var(--yellow-theme);
+}
+
+#gitfolio{
+  background: var(--gitfolio-background);
+  --gitfolio-background: #0d1117;
+}
+
+.section-heading{
+  padding-left: 120px;
+}
+
+#gitfolio-content{
+  padding-left: 150px;
+  margin-bottom: 100px;
+}
+
+#gitfolio{
+    color: white;
+}
+
+/* home css */
+#home-gitfolio{
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#home-gitfolio::before{
+    /* background: url('../assets/img/github.webp') no-repeat; */
+    background-size: 70% 57%;
+    background-position-x: right;
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(5px); /* Adjust the blur radius as needed */
+    z-index: -1; 
+}
+
+
+/* nav bar */
+.gitfolio-nav{
+    background: transparent;
+    box-shadow: 0px -22px 10px 20px #ffffff1a;
+    height: 60px;
+    padding: 10px 100px;
+    border-bottom: 1px solid var(--yellow-theme);
+    /* #ffffff45; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    background: var(--gitfolio-background);
+}
+
+#gitfolio-nav-items ul{
+    display: flex;
+    flex-direction: row;
+}
+#gitfolio-nav-items ul li{
+    list-style: none;
+    margin: 10px;
+    cursor: pointer;
+    transition: color 500ms;
+}
+
+#gitfolio-nav-items ul li:hover{
+    color: var(--yellow-theme);
+    transition: color 500ms;
+}
+
+#gitfolio-nav-btn{
+    padding: 5px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 500ms;
+}
+
+#gitfolio-nav-btn:hover{
+    box-shadow: inset 0px 0px 5px var(--yellow-theme);
+    color: var(--yellow-theme);
+    border: 1px solid #ffbb00;
+    transition: all 500ms;
+}
+
+
+/* INTRO */
+.gitfolio-intro{
+    display: flex;
+    height:100%;
+    width: 100%;
+    --welcome-width: 50%;
+}
+
+.gitfolio-welcome{
+    width: var(--welcome-width);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.gitfolio-greeting, .gitfolio-titles{
+    width: 100%;
+    padding-left:40%;
+    filter: drop-shadow(24px 5px 60px #ffa600be);
+}
+
+.gitfolio-greeting h1{
+    font-size: 2em;
+}
+
+.gitfolio-intro-img{
+    display: flex;
+    height: 100%;
+    width: calc(100% - var(--welcome-width));
+    align-content: flex-start;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.gitfolio-intro-img img{
+    height: 90%;
+    width: 80%;
+    object-fit: contain;
+    filter: drop-shadow(24px 5px 60px #ffa60030);
+}
+
+
+/* Project Card */
+.project-container{
+  margin-top: 30px;
+}
+
+.Projects{
+    display: flex;
+    width: 88%;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding-left: 115px;
+    padding-top: 30px;
+}
+
+.project-card{
+    height: 400px;
+    width: 400px;
+    box-shadow: none;
+    transition: box-shadow 800ms;
+    padding: 5px 0px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.project-card:hover{
+    box-shadow: 0px 0px 2px 0px var(--yellow-theme), 0px 0px 4px 4px #282c34;
+    transition: box-shadow 800ms;
+    background: #111111;
+}
+
+.card-thumbnail {
+    
+    height: 50%;
+    width: 100%;
+  }
+  
+  .blur-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+    z-index: 0;
+    opacity: 0.3;
+    box-shadow: inset 0px 0px 2px 15px #0d0f14; /* Adjust blur radius as needed */
+  }
+  
+  .card-thumbnail img {
+    padding:10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+  }
+
+  .card-title, .card-body{
+    padding: 5px 10px;
+    z-index: 3;
+    position: relative;
+  }
+
+  .card-body{
+    color: #9ca3af;
+  }
+
+/* work experience tab */
+
+.work-experience {
+    position: relative;
+  }
+  
+  .tab {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+  }
+  
+  .description {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .MuiStepLabel-label{
+    color: white !important;
+    font-size: 1.5em !important;
+  }
+
+  .work-experience-container{
+    display: grid;
+  }
+
+  .work-experience-tree{
+    justify-self: center;
+    width: 80%;
+  }
+
+  .company-tree{
+    width: 88%;
+    margin: 10px;
+    padding-bottom: 10px; 
+  }
+
+  .company-tree-label{
+    width: max-content;
+    /* background-color: red; */
+    display: flex;
+    height: 30%;
+    font-size: 1.5em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .company-tree-label h3{
+    padding-left: 10px;
+    color: #9ca3af;
+  }
+
+  .company-tree-description{
+    margin-left: 20px;
+    border-left: 1px solid var(--yellow-theme);
+    padding-left: 60px;
+    color: #9ca3af;
+  }
+
+  .company-tree ul{
+    list-style: circle;
+  }
+
+  .company-tree ul li::marker{
+    color: var(--yellow-theme)
+  }
+
+/* footer */
+  .footer-section{
+    width: 100%;
+    min-height: 50px;
+    padding: 10px 60px;
+    border-top: 1px solid var(--yellow-theme);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer-section ul{
+    display: block;
+  }
+
+  .dock-container{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    min-width: 80px;
+    justify-content: space-around;
+  }
+
+  .dock-item{
+    display: grid;
+    justify-items: center;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    transition: all 500ms;
+  }
+
+  .dock-item svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--f{
+    transition: font-size 600ms;
+    position: absolute;
+  }
+  .dock-item:hover svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--f{
+    font-size: 1.5em;
+    transition: font-size 600ms;
+  }
+
+  .dock-item:hover{
+    color: var(--yellow-theme);
+    transition: color 800ms;
+  }
+
+/* scroll down */
+@-webkit-keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+@-moz-keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+@keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+ .scroll-btn {
+	display: block;
+	/* position: absolute; */
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.scroll-btn > * {
+	display: inline-block;
+	line-height: 18px;
+	font-size: 13px;
+	font-weight: normal;
+	color: #7f8c8d;
+	color: #ffffff;
+	font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	letter-spacing: 2px;
+}
+.scroll-btn > *:hover,
+.scroll-btn > *:focus,
+.scroll-btn > *.active {
+	color: #ffffff;
+}
+.scroll-btn > *:hover,
+.scroll-btn > *:focus,
+.scroll-btn > *:active,
+.scroll-btn > *.active {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.scroll-btn .mouse {
+	position: relative;
+	display: block;
+	width: 35px;
+	height: 55px;
+	margin: 0 auto 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 3px solid white;
+	border-radius: 23px;
+}
+.scroll-btn .mouse > * {
+	position: absolute;
+	display: block;
+	top: 29%;
+	left: 50%;
+	width: 8px;
+	height: 8px;
+	margin: -4px 0 0 -4px;
+	background: var(--yellow-theme);
+	border-radius: 50%;
+	-webkit-animation: ani-mouse 2.5s linear infinite;
+	-moz-animation: ani-mouse 2.5s linear infinite;
+	animation: ani-mouse 2.5s linear infinite;
+}
+
