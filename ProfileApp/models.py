@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 import uuid
-
+from django_ckeditor_5.fields import CKEditor5Field
 
 class TimeStamp(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
@@ -105,3 +105,40 @@ class Designation(models.Model):
     
     def __str__(self) -> str:
         return str(self.title)
+    
+class WorkExperience(models.Model):
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    
+    company_name = models.CharField(max_length=50)
+    
+    joined_date = models.DateField()
+    
+    till_date = models.DateField(blank=True, null=True)
+    
+    description = CKEditor5Field('Text', config_name='extends')
+    
+    company_logo = models.FileField(upload_to="logo/company/", max_length=100, blank=True, null=True)
+    
+    def __str__(self):
+        return f"{self.company_name} - {self.profile_id.get_name()}"
+    
+
+class Projects(models.Model):
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    
+    title   = models.CharField(max_length=100)
+    
+    description = models.TextField()
+    
+    github_link = models.CharField(max_length=100, blank=True, null=True)
+    
+    project_link = models.CharField(max_length=100, blank=True, null=True)
+    
+    skills_used = models.ManyToManyField(Skills)
+    
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = 'Proejct'
+        verbose_name_plural = 'Proejcts'
