@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     
     # Other installed apps
     'django_ckeditor_5',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,14 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
 
 WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
@@ -225,6 +234,67 @@ CKEDITOR_5_CONFIGS = {
             'styles': 'true',
             'startIndex': 'true',
             'reversed': 'true',
+        }
+    }
+}
+
+# LOGGER CONFIGURATIONS
+log_dir = os.path.join(BASE_DIR, 'log')
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+APP_LOG_FILENAME = os.path.join(BASE_DIR, 'log/app.log')
+
+ERROR_LOG_FILENAME = os.path.join(BASE_DIR, 'log/error.log')
+
+SENSITIVE_LOG_FILENAME = os.path.join(BASE_DIR, 'log/sensitive.log')
+
+LOGFILE_SIZE = 20 * 1024 * 1024
+
+LOGFILE_COUNT = 10
+
+# defining loggers
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': "[%(asctime)s] %(levelname)s [%(filename)s:%(lineno)s] [%(AppName)s] %(message)s",
+            'datefmt': "%d-%b-%Y %H:%M:%S"
+        }
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler'
+        },
+        'applog': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': APP_LOG_FILENAME,
+            'maxBytes': LOGFILE_SIZE,
+            'backupCount': LOGFILE_COUNT,
+            'formatter': 'standard',
+        },
+        'errorlog': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': ERROR_LOG_FILENAME,
+            'maxBytes': LOGFILE_SIZE,
+            'backupCount': LOGFILE_COUNT,
+            'formatter': 'standard',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['applog'],
+            'level': 'INFO',
+            'propagate': True,
         }
     }
 }

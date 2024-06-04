@@ -85,7 +85,7 @@ class Profile(TimeStamp):
 
 
 class Designation(models.Model):
-    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="designation")
     
     title = models.CharField(max_length=100, validators=[
                                       RegexValidator(
@@ -107,7 +107,7 @@ class Designation(models.Model):
         return str(self.title)
     
 class WorkExperience(models.Model):
-    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="work_experience")
     
     company_name = models.CharField(max_length=50)
     
@@ -124,7 +124,7 @@ class WorkExperience(models.Model):
     
 
 class Projects(models.Model):
-    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="projects")
     
     title   = models.CharField(max_length=100)
     
@@ -140,5 +140,5 @@ class Projects(models.Model):
         return self.title
     
     class Meta:
-        verbose_name = 'Proejct'
-        verbose_name_plural = 'Proejcts'
+        verbose_name = 'Project'
+        verbose_name_plural = 'Projects'
